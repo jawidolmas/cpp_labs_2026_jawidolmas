@@ -9,7 +9,4 @@ Welcome to my **C++ Programming Lab Assignments** for Spring 2026 semester!
 | 1 | Test Calculator (+ - * /) | [testcpp_for_lab](testcpp_for_lab) |
 
 
-## 🚀 How to Run
-```bash
-g++ week1-calculator.cpp -o calculator
-./calculator
+
