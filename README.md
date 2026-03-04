@@ -6,7 +6,7 @@ Welcome to my **C++ Programming Lab Assignments** for Spring 2026 semester!
 
 | Week | Topic | File |
 |------|-------|------|
-| 1 | Test Calculator (+ - * /) | [testcpp_for_lab](testcpp_for_lab) |
+| 1 | Test Calculator (+ - * /) | [week_one_for_lab](week_one_cpp) |
 
 
 
