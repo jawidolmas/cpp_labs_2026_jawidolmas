@@ -1,0 +1,75 @@
+#include<iostream>
+
+using namespace std;
+
+
+void calculator();
+int main()
+{
+/*    string username;
+    string letter;
+    int age;
+    double gpa;
+    cout << "Enter your name: ";
+    getline(cin, username);
+    cout << "Enter you grade: ";
+    getline(cin, letter);
+    cout << "Enter your age: ";
+    cin >> age;
+    cout << "Enter your G.P.A: ";
+    cin >> gpa;
+    cout << "Hello " << username << ", Your are is " << letter << ", you age is " << age << ", and your GPA is " << gpa <<endl;
+*/
+
+    calculator();
+
+
+
+}
+
+
+
+
+void calculator() {
+    double num, num2, result;
+    char operation;
+
+    cout << "Welcome to world's simplest calculator!\n\n";
+
+    while (true) {
+        cout << "Select operation (+, -, *, /) or 'q' to quit: ";
+        cin >> operation;
+
+        if (operation == 'q' || operation == 'Q') break;
+        if (operation != '+' && operation != '-' && operation != '*' && operation != '/') {
+            cout << " Invalid operation! Try again.\n\n";
+            continue;
+        }
+
+        cout << "Enter 1st number: ";
+        cin >> num;
+        cout << "Enter 2nd number: ";
+        cin >> num2;
+
+        switch (operation) {
+            case '+': result = num + num2; break;
+            case '-': result = num - num2; break;
+            case '*': result = num * num2; break;
+            case '/':
+                if (num2 == 0) {
+                    cout << "Cannot divide by zero!\n\n";
+                    continue;
+                }
+                result = num / num2;
+                break;
+        }
+
+        cout << "Result: " << num << " " << operation << " " << num2 << " = " << result << "\n\n";
+        cout << "Press Enter to continue or 'q' + Enter to quit: ";
+        cin.ignore();
+        cin.get();
+    }
+    cout << "Thanks for using calculator!\n";
+}
+
+
