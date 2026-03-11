@@ -1,1 +1,96 @@
+#include <iostream>
+#include <string>
+using namespace std;
 
+
+struct Node {
+    string data;
+    Node* next;
+
+    Node(string d) : data(d), next(nullptr) {}
+};
+
+Node* append(Node* head, string word) {
+    Node* newNode = new Node(word);
+
+    if (!head) return newNode;
+
+    Node* curr = head;
+    while (curr->next) {
+        curr = curr->next;
+    }
+    curr->next = newNode;
+    return head;
+}
+
+
+Node* undo(Node* head) {
+    if (!head || !head->next) {
+        cout << "What???? What should I delete??? Nothing to undo!" << endl;
+        return head;
+    }
+
+    Node* curr = head;
+    while (curr->next->next) {
+        curr = curr->next;
+    }
+
+    Node* last = curr->next;
+    curr->next = nullptr;
+    cout << "UNDO: Deleted '" << last->data << "'" << endl;
+    delete last;
+    return head;
+}  // As I used the undo function for at least one empty list, the only one element list cannot be deleted as I consider that empty. (Node* last = curr->next;),
+  // the deletion will only work if we have more than one element inside the list.
+
+void display(Node* head) {
+    if (!head) {
+        cout << "[empty] -> NULL" << endl;
+        return;
+    }
+
+    Node* curr = head;
+    while (curr) {
+        cout << "[" << curr->data << "] -> ";
+        curr = curr->next;
+    }
+    cout << "NULL" << endl;
+}
+
+int main() {
+    Node* head = nullptr;
+    string input;
+
+    cout << "Simple Text Editor (type EXIT to quit)(type UNDO to delete the last word)" << endl;
+
+    while (true) {
+        cout << "Enter word: ";
+        getline(cin, input);
+
+        if (input == "EXIT") {
+            cout << "Final list:" << endl;
+            display(head);
+            break;
+        }
+
+        if (input == "UNDO") {
+            head = undo(head);
+        } else {
+            head = append(head, input);
+            cout << "Added: " << input << endl;
+        }
+
+        cout << "Current list:" << endl;
+        display(head);
+        cout << "---" << endl;
+    }
+
+    Node* curr = head;
+    while (curr) {
+        Node* temp = curr;
+        curr = curr->next;
+        delete temp;
+    }
+
+    return 0;
+}
